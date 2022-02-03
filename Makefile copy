@@ -11,10 +11,10 @@ figs:
 doc: $(DOC:.tex=.pdf)
 
 %.pdf: %.tex
-	xelatex $<
-	@egrep -q $(RERUNBIB) $*.log && bibtex $* && xelatex $<; true
-	@egrep -q $(RERUN) $*.log && xelatex $<; true
-	@egrep -q $(RERUN) $*.log && xelatex $<; true
+	pdflatex $<
+	@egrep -q $(RERUNBIB) $*.log && bibtex $* && pdflatex $<; true
+	@egrep -q $(RERUN) $*.log && pdflatex $<; true
+	@egrep -q $(RERUN) $*.log && pdflatex $<; true
 
 latexmk:
 	-latexmk -pvc -pdf $(DOC)
